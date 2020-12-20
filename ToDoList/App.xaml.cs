@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using ToDoList.Data;
 using ToDoList.ViewModels;
@@ -43,11 +38,11 @@ namespace ToDoList
             IServiceCollection services = new ServiceCollection();
 
             //Inject services
-            //services.AddSingleton<INetworkService, VkService>();
             services.AddDbContext<TodoItemsContext>(opt =>
                 opt.UseSqlite("Data source= .\\ToDoDb.db"));
 
             services.AddScoped<MainViewModel>();
+
             return services.BuildServiceProvider();
         }
     }
